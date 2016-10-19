@@ -1,0 +1,34 @@
+Project log:
+Project is counted in Days, with each meeting considered as a Day.
+
+General chronological log:
+Day 0:
+-Downloaded and installed ISE and Mojo IDE on team's workstations
+-Read through the first FPGA program tutorial
+
+Day 1:
+-Go through the following tutorials together as a team:
+--first FPGA program together
+--Synchronous logic
+--IO shield
+-Explore and understand the syntax of MOJO and Lucid
+
+Day 2:
+-Coded ALU bare-minimum as required for ALU Functionality
+-Decided to include following functionality: Greater than / greater-equals, divide, multiply
+
+
+Design considerations:
+Considering how the ALU is 8-bit, we decided to keep the output of the ALU as 8-bits as well, and utilise the remaining LED arrays for the following purposes:
+-Overflowed output 
+-a == b
+-Error-checking and diagnosis for testing
+
+We also decided to map io_dip[0] as the array "alufn", io_dip[1] as "a", and io_dip[2] as "b", in a bid to make the code more readable. 
+
+The output of the ALU is mapped as such:
+-io_led[0] : output of ALU
+-io_led[1] : diagnostic output of ALU, consisting of (0 -> overflow, 1 -> a == b)
+
+
+

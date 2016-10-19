@@ -15,7 +15,10 @@ Day 1:
 
 Day 2:
 -Coded ALU bare-minimum as required for ALU Functionality
--Decided to include following functionality: Greater than / greater-equals, divide, multiply
+-Decided to include following functionality: Greater than / greater-equals, divide, modulo, multiply, output "b", with our own alufn code.
+-Encountered issues with division- no such operation exists in the mojo documentation
+-Decided to implement division with binary numbers based off advice in http://electronics.stackexchange.com/questions/155899/implementing-integer-division-in-hardware
+-implemented modulo with the same structure as divide, except using the undivisible remainder of a as the result to be printed.
 
 
 Design considerations:
@@ -30,5 +33,6 @@ The output of the ALU is mapped as such:
 -io_led[0] : output of ALU
 -io_led[1] : diagnostic output of ALU, consisting of (0 -> overflow, 1 -> a == b)
 
+We realised that division a/b can be done, by considering a growing array in a and comparing that to b. This can be implemented with a for loop.
 
-
+Upon testing, we realised that we cannot do an arithmetic assignment in code (eg a = a + 1). As such, we use flip-flops to store the bits of the result.

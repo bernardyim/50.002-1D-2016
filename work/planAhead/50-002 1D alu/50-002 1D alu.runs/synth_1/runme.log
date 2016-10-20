@@ -1,0 +1,258 @@
+
+*** Running xst
+    with args -ifn mojo_top_0.xst -ofn mojo_top_0.srp -intstyle ise
+
+Reading design: mojo_top_0.prj
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/reset_conditioner_1.v" into library work
+Parsing module <reset_conditioner_1>.
+Analyzing Verilog file "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v" into library work
+Parsing module <mojo_top_0>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <mojo_top_0>.
+
+Elaborating module <reset_conditioner_1>.
+WARNING:HDLCompiler:413 - "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 144: Result of 32-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 145: Result of 32-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 146: Result of 32-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:1127 - "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 55: Assignment to rst ignored, since the identifier is never used
+WARNING:Xst:2972 - "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v" line 33. All outputs of instance <reset_cond> of block <reset_conditioner_1> are unconnected in block <mojo_top_0>. Underlying logic will be removed.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <mojo_top_0>.
+    Related source file is "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v".
+WARNING:Xst:647 - Input <io_button> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <io_dip<23:22>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <cclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <spi_ss> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <spi_sck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <avr_tx> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v" line 33: Output port <out> of the instance <reset_cond> is unconnected or connected to loadless signal.
+    Found 8-bit subtractor for signal <io_dip[15]_io_dip[15]_sub_48_OUT> created at line 121.
+    Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_61_OUT> created at line 139.
+    Found 8-bit adder for signal <n0277> created at line 75.
+    Found 8-bit adder for signal <io_dip[15]_GND_1_o_add_3_OUT> created at line 75.
+    Found 9-bit adder for signal <n0263> created at line 133.
+    Found 8-bit shifter logical left for signal <io_dip[15]_io_dip[7]_shift_left_26_OUT> created at line 93
+    Found 8-bit shifter logical right for signal <io_dip[15]_io_dip[7]_shift_right_28_OUT> created at line 96
+    Found 8-bit shifter arithmetic right for signal <io_dip[15]_io_dip[7]_shift_right_30_OUT> created at line 99
+    Found 8x8-bit multiplier for signal <n0241> created at line 111.
+    Found 8x8-bit multiplier for signal <n0244> created at line 121.
+    Found 24-bit 3-to-1 multiplexer for signal <_n0298> created at line 138.
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 55
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 55
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 55
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 55
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 55
+    Found 1-bit tristate buffer for signal <avr_rx> created at line 55
+    Found 8-bit comparator greater for signal <io_dip[15]_io_dip[7]_LessThan_35_o> created at line 105
+    Found 8-bit comparator greater for signal <n0107> created at line 108
+    Found 9-bit comparator greater for signal <GND_1_o_BUS_0003_LessThan_56_o> created at line 134
+    Found 24-bit comparator greater for signal <GND_1_o_GND_1_o_LessThan_62_o> created at line 140
+    Found 8-bit comparator equal for signal <io_dip[15]_io_dip[7]_equal_66_o> created at line 147
+    Summary:
+	inferred   2 Multiplier(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred   5 Comparator(s).
+	inferred 136 Multiplexer(s).
+	inferred   3 Combinational logic shifter(s).
+	inferred   6 Tristate(s).
+Unit <mojo_top_0> synthesized.
+
+Synthesizing Unit <div_8u_8u>.
+    Related source file is "".
+    Found 16-bit adder for signal <n0292> created at line 0.
+    Found 16-bit adder for signal <GND_6_o_b[7]_add_1_OUT> created at line 0.
+    Found 15-bit adder for signal <n0296> created at line 0.
+    Found 15-bit adder for signal <GND_6_o_b[7]_add_3_OUT> created at line 0.
+    Found 14-bit adder for signal <n0300> created at line 0.
+    Found 14-bit adder for signal <GND_6_o_b[7]_add_5_OUT> created at line 0.
+    Found 13-bit adder for signal <n0304> created at line 0.
+    Found 13-bit adder for signal <GND_6_o_b[7]_add_7_OUT> created at line 0.
+    Found 12-bit adder for signal <n0308> created at line 0.
+    Found 12-bit adder for signal <GND_6_o_b[7]_add_9_OUT> created at line 0.
+    Found 11-bit adder for signal <n0312> created at line 0.
+    Found 11-bit adder for signal <GND_6_o_b[7]_add_11_OUT> created at line 0.
+    Found 10-bit adder for signal <n0316> created at line 0.
+    Found 10-bit adder for signal <GND_6_o_b[7]_add_13_OUT> created at line 0.
+    Found 9-bit adder for signal <n0320> created at line 0.
+    Found 9-bit adder for signal <GND_6_o_b[7]_add_15_OUT> created at line 0.
+    Found 16-bit comparator lessequal for signal <BUS_0001> created at line 0
+    Found 15-bit comparator lessequal for signal <BUS_0002> created at line 0
+    Found 14-bit comparator lessequal for signal <BUS_0003> created at line 0
+    Found 13-bit comparator lessequal for signal <BUS_0004> created at line 0
+    Found 12-bit comparator lessequal for signal <BUS_0005> created at line 0
+    Found 11-bit comparator lessequal for signal <BUS_0006> created at line 0
+    Found 10-bit comparator lessequal for signal <BUS_0007> created at line 0
+    Found 9-bit comparator lessequal for signal <BUS_0008> created at line 0
+    Found 8-bit comparator lessequal for signal <BUS_0009> created at line 0
+    Summary:
+	inferred  16 Adder/Subtractor(s).
+	inferred   9 Comparator(s).
+	inferred  57 Multiplexer(s).
+Unit <div_8u_8u> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 2
+ 8x8-bit multiplier                                    : 2
+# Adders/Subtractors                                   : 21
+ 10-bit adder                                          : 2
+ 11-bit adder                                          : 2
+ 12-bit adder                                          : 2
+ 13-bit adder                                          : 2
+ 14-bit adder                                          : 2
+ 15-bit adder                                          : 2
+ 16-bit adder                                          : 2
+ 8-bit adder                                           : 2
+ 8-bit subtractor                                      : 1
+ 9-bit adder                                           : 3
+ 9-bit subtractor                                      : 1
+# Comparators                                          : 14
+ 10-bit comparator lessequal                           : 1
+ 11-bit comparator lessequal                           : 1
+ 12-bit comparator lessequal                           : 1
+ 13-bit comparator lessequal                           : 1
+ 14-bit comparator lessequal                           : 1
+ 15-bit comparator lessequal                           : 1
+ 16-bit comparator lessequal                           : 1
+ 24-bit comparator greater                             : 1
+ 8-bit comparator equal                                : 1
+ 8-bit comparator greater                              : 2
+ 8-bit comparator lessequal                            : 1
+ 9-bit comparator greater                              : 1
+ 9-bit comparator lessequal                            : 1
+# Multiplexers                                         : 193
+ 1-bit 2-to-1 multiplexer                              : 179
+ 24-bit 2-to-1 multiplexer                             : 2
+ 24-bit 3-to-1 multiplexer                             : 1
+ 32-bit 2-to-1 multiplexer                             : 7
+ 8-bit 2-to-1 multiplexer                              : 4
+# Logic shifters                                       : 3
+ 8-bit shifter arithmetic right                        : 1
+ 8-bit shifter logical left                            : 1
+ 8-bit shifter logical right                           : 1
+# Tristates                                            : 6
+ 1-bit tristate buffer                                 : 6
+# Xors                                                 : 2
+ 8-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <mojo_top_0>.
+	Multiplier <Mmult_n0244> in block <mojo_top_0> and adder/subtractor <Msub_io_dip[15]_io_dip[15]_sub_48_OUT> in block <mojo_top_0> are combined into a MAC<Maddsub_n0244>.
+Unit <mojo_top_0> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# MACs                                                 : 1
+ 8x8-to-8-bit MAC                                      : 1
+# Multipliers                                          : 1
+ 8x8-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 11
+ 8-bit adder carry in                                  : 9
+ 9-bit adder                                           : 1
+ 9-bit subtractor                                      : 1
+# Comparators                                          : 14
+ 10-bit comparator lessequal                           : 1
+ 11-bit comparator lessequal                           : 1
+ 12-bit comparator lessequal                           : 1
+ 13-bit comparator lessequal                           : 1
+ 14-bit comparator lessequal                           : 1
+ 15-bit comparator lessequal                           : 1
+ 16-bit comparator lessequal                           : 1
+ 24-bit comparator greater                             : 1
+ 8-bit comparator equal                                : 1
+ 8-bit comparator greater                              : 2
+ 8-bit comparator lessequal                            : 1
+ 9-bit comparator greater                              : 1
+ 9-bit comparator lessequal                            : 1
+# Multiplexers                                         : 193
+ 1-bit 2-to-1 multiplexer                              : 179
+ 24-bit 2-to-1 multiplexer                             : 2
+ 24-bit 3-to-1 multiplexer                             : 1
+ 32-bit 2-to-1 multiplexer                             : 7
+ 8-bit 2-to-1 multiplexer                              : 4
+# Logic shifters                                       : 3
+ 8-bit shifter arithmetic right                        : 1
+ 8-bit shifter logical left                            : 1
+ 8-bit shifter logical right                           : 1
+# Xors                                                 : 2
+ 8-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <mojo_top_0> ...
+
+Optimizing unit <div_8u_8u> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 6.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 42.839ns
+
+=========================================================================

@@ -19,7 +19,7 @@ Day 2:
 -Encountered issues with division- no such operation exists in the mojo documentation
 -Decided to implement division with binary numbers based off advice in http://electronics.stackexchange.com/questions/155899/implementing-integer-division-in-hardware
 -implemented modulo with the same structure as divide, except using the undivisible remainder of a as the result to be printed.
-
+-Discovered that "/" is indeed the divisor operation in mojo
 
 Design considerations:
 Considering how the ALU is 8-bit, we decided to keep the output of the ALU as 8-bits as well, and utilise the remaining LED arrays for the following purposes:
@@ -36,3 +36,10 @@ The output of the ALU is mapped as such:
 We realised that division a/b can be done, by considering a growing array in a and comparing that to b. This can be implemented with a for loop.
 
 Upon testing, we realised that we cannot do an arithmetic assignment in code (eg a = a + 1). As such, we use flip-flops to store the bits of the result.
+
+Day 3:
+-We realised that the implementation of division is unnecessary, given the "/" operator
+-Upon testing, we realised that the initial method of adding and subtracting (by using the + and - of lucid functionality) is inadequate. We reverted back to using the adder as described in lab3.
+
+
+

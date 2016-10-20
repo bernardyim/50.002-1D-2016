@@ -30,8 +30,10 @@ module mojo_top (
   sig alufn [8];
   sig a [8];
   sig b [8];
-  var i;
-  sig register [8];
+  sig xb [8];
+  var overflow;
+  var n;
+  var z;
   
   always {
     reset_cond.in = ~rst_n; // input raw inverted reset signal
@@ -46,76 +48,96 @@ module mojo_top (
     io_seg = 8hff;          // turn segments off
     io_sel = 4hf;           // select no digits
     
+    result = 24h00; // initialise result to 0
     alufn = io_dip[2]; // link left input array to alufn
     a = io_dip[1]; // link middle input array to a
     b = io_dip[0]; // link right input array to b
-    result = 24h00; // initialise result to 0
+    xb = 8h00;     // initialise xb to 0
+    overflow = 0;  // initialise overflow to 0
+    n = 0;         // initialise negative results bit for adder/subtractor to 0
+    z = 0;         // initialise results bit for adder/subtractor to 0
+
     
-    if (alufn[5-:6] == 6h00) // add
-      result = a + b;
-    if (alufn[5-:6] == 6h01) // subtract
-      result = a - b;
-    if (alufn[5-:6] == 6h18) // boolean and
-      result = a & b;
-    if (alufn[5-:6] == 6h1e) // boolean or
-      result = a | b;
-    if (alufn[5-:6] == 6h16) // boolean xor
-      result = a ^ b;
-    if (alufn[5-:6] == 6h1a) // a
-      result = a;
-    if (alufn[5-:6] == 6h20) // shl
-      result = a << b;
-    if (alufn[5-:6] == 6h21) // shr
-      result = a >> b;
-    if (alufn[5-:6] == 6h23) // sra
-      result = $signed(a) >>> b;
-    if (alufn[5-:6] == 6h33) // cmpeq
-      result = a == b;
-    if (alufn[5-:6] == 6h35) // cmplt
-      result = a < b;
-    if (alufn[5-:6] == 6h37) // cmple
-      result = a <= b;
-      
-    //additional functionality
-    if (alufn[5-:6] == 6h02) // multiply
-      result = a * b;
-    if (alufn[5-:6] == 6h03) { // divide
-      register = a;
-      for (i = 7; i >= 0; i--) {
-        if (register[7:i] >= b) {
-          register[7:i] = a[7:i] - b;
-          a[7:i] = register[7:i];
-          result[i] = 1;
-        } else {
-          result[i] = 0;
-        }
-      }
+    if (alufn[5:1] == 5h0) { //adding and subtracting via the schematics of lab3
+      xb = b ^ 8x{alufn[0]};
+      result[7:0] = a + xb + alufn[0];
+      overflow = (~(a[7] ^ xb[7])) ^ result[7];
+      n = result[7];
+      z = result[7:0] == 8h00;
     }
-/*    if (alufn[5-:6] == 6h04) { // modulo
-      register.d = a;
-      for (i = 7; i >= 0; i--) {
-        if (register.q[7:i] >= b) {
-          register.d[7:i] = register.q[7:i] - b;
-        }
-      }
-      result = register.q;
-    }   */
+    if (alufn[5-:6] == 6h18) // boolean and
+      result[7:0] = a & b;
+    if (alufn[5-:6] == 6h1e) // boolean or
+      result[7:0] = a | b;
+    if (alufn[5-:6] == 6h16) // boolean xor
+      result[7:0] = a ^ b;
+    if (alufn[5-:6] == 6h1a) // a
+      result[7:0] = a;
+    if (alufn[5-:6] == 6h20) // shl
+      result[7:0] = a << b;
+    if (alufn[5-:6] == 6h21) // shr
+      result[7:0] = a >> b;
+    if (alufn[5-:6] == 6h23) // sra
+      result[7:0] = $signed(a) >>> b;
+    if (alufn[5-:6] == 6h33) // cmpeq
+      result[7:0] = a == b;
+    if (alufn[5-:6] == 6h35) // cmplt
+      result[7:0] = a < b;
+    if (alufn[5-:6] == 6h37) // cmple
+      result[7:0] = a <= b;
+    
+    if (alufn[5-:6] == 6h12) // multiply unsigned
+      result[7:0] = a * b;
+    if (alufn[5-:6] == 6h13) {  // divide unsigned
+      if (b == 0)
+        io_led[1][7] = 1;
+      else
+        result[7:0] = a / b;
+    }
+    
+    if (alufn[5-:6] == 6h14) // modulo unsigned
+      result[7:0] = a - a/b * b;
+    
     if (alufn[5-:6] == 6h1b) // b
-      result = b;
+      result[7:0] = b;
+    
     if (alufn[5-:6] == 6h36) // cmpgt
-      result = a > b;
+      result[7:0] = a > b;
     if (alufn[5-:6] == 6h38) // cmpge
-      result = a >= b;
+      result[7:0] = a >= b;
       
-    if (result > 8hff) // overflow
-      io_led[1][0] = 1;
+   
+    if (alufn[5-:6] == 6h02) { // add (unsigned)
+      result = a + b;
+      if (result > 24hff)
+        overflow = 1;
+    }
+    
+    if (alufn[5-:6] == 6h03) { // subtract (unsigned)
+      result = a - b;
+      if (result > 24hff)
+        overflow = 1;
+    }
+    
+    if (alufn[5-:6] == 6h15) { // divide signed..?
+      if (b == 0)
+        io_led[1][7] = 1;
+      else
+        result[7:0] = ($signed(a)) / ($signed(b));
+    }
+    
+    
+    io_led[1][0] = overflow; //set overflow led
+    io_led[1][1] = z;        //set add/subtract results in 0 led
+    io_led[1][2] = n;        //set add/subtract results in negative led
+
     if (a == b) // equal
-      io_led[1][1] = 1;
-    //TODO:
-    //self-test
+       io_led[1][3] = 1;
     
-    io_led[0] = result[7-:8];
-    
-    
+    io_led[0] = result[7:0];
+
+
+//TODO:
+//self-test
   }
 }

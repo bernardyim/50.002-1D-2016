@@ -42,22 +42,22 @@ WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved
 INFO:Xst:3210 - "/home/deadonce/Downloads/mojo-ide-B1.3.4/projects/50-002 1D alu/work/planAhead/50-002 1D alu/50-002 1D alu.srcs/sources_1/imports/verilog/mojo_top_0.v" line 33: Output port <out> of the instance <reset_cond> is unconnected or connected to loadless signal.
     Found 8-bit subtractor for signal <io_dip[15]_io_dip[15]_sub_48_OUT> created at line 121.
     Found 9-bit subtractor for signal <GND_1_o_GND_1_o_sub_61_OUT> created at line 139.
-    Found 8-bit adder for signal <n0277> created at line 75.
+    Found 8-bit adder for signal <n0285> created at line 75.
     Found 8-bit adder for signal <io_dip[15]_GND_1_o_add_3_OUT> created at line 75.
-    Found 9-bit adder for signal <n0263> created at line 133.
+    Found 9-bit adder for signal <n0271> created at line 133.
     Found 8-bit shifter logical left for signal <io_dip[15]_io_dip[7]_shift_left_26_OUT> created at line 93
     Found 8-bit shifter logical right for signal <io_dip[15]_io_dip[7]_shift_right_28_OUT> created at line 96
     Found 8-bit shifter arithmetic right for signal <io_dip[15]_io_dip[7]_shift_right_30_OUT> created at line 99
     Found 8x8-bit multiplier for signal <n0241> created at line 111.
     Found 8x8-bit multiplier for signal <n0244> created at line 121.
-    Found 24-bit 3-to-1 multiplexer for signal <_n0298> created at line 138.
+    Found 24-bit 3-to-1 multiplexer for signal <_n0306> created at line 138.
     Found 1-bit tristate buffer for signal <spi_miso> created at line 55
     Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 55
     Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 55
     Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 55
     Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 55
     Found 1-bit tristate buffer for signal <avr_rx> created at line 55
-    Found 8-bit comparator greater for signal <io_dip[15]_io_dip[7]_LessThan_35_o> created at line 105
+    Found 8-bit comparator greater for signal <io_dip[7]_io_dip[15]_LessThan_35_o> created at line 105
     Found 8-bit comparator greater for signal <n0107> created at line 108
     Found 9-bit comparator greater for signal <GND_1_o_BUS_0003_LessThan_56_o> created at line 134
     Found 24-bit comparator greater for signal <GND_1_o_GND_1_o_LessThan_62_o> created at line 140
@@ -213,7 +213,7 @@ Optimizing unit <div_8u_8u> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 6.
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 7.
 
 Final Macro Processing ...
 
@@ -253,6 +253,6 @@ Speed Grade: -2
    Minimum period: No path found
    Minimum input arrival time before clock: No path found
    Maximum output required time after clock: No path found
-   Maximum combinational path delay: 42.839ns
+   Maximum combinational path delay: 42.312ns
 
 =========================================================================

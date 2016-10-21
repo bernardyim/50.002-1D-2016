@@ -102,10 +102,10 @@ module mojo_top_0 (
       result[0+7-:8] = a == b;
     end
     if (alufn[0+5-:6] == 6'h35) begin
-      result[0+7-:8] = a < b;
+      result[0+7-:8] = $signed(a) < $signed(b);
     end
     if (alufn[0+5-:6] == 6'h37) begin
-      result[0+7-:8] = a <= b;
+      result[0+7-:8] = $signed(a) <= $signed(b);
     end
     if (alufn[0+5-:6] == 6'h12) begin
       result[0+7-:8] = a * b;
@@ -124,10 +124,10 @@ module mojo_top_0 (
       result[0+7-:8] = b;
     end
     if (alufn[0+5-:6] == 6'h36) begin
-      result[0+7-:8] = a > b;
+      result[0+7-:8] = $signed(a) > $signed(b);
     end
     if (alufn[0+5-:6] == 6'h38) begin
-      result[0+7-:8] = a >= b;
+      result[0+7-:8] = $signed(a) >= $signed(b);
     end
     if (alufn[0+5-:6] == 6'h02) begin
       result = a + b;

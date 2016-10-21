@@ -86,9 +86,9 @@ module mojo_top (
     if (alufn[5-:6] == 6h33) // cmpeq
       result[7:0] = a == b;
     if (alufn[5-:6] == 6h35) // cmplt
-      result[7:0] = a < b;
+      result[7:0] = $signed(a) < $signed(b);
     if (alufn[5-:6] == 6h37) // cmple
-      result[7:0] = a <= b;
+      result[7:0] = $signed(a) <= $signed(b);
     
     if (alufn[5-:6] == 6h12) // multiply unsigned
       result[7:0] = a * b;
@@ -105,9 +105,9 @@ module mojo_top (
       result[7:0] = b;
     
     if (alufn[5-:6] == 6h36) // cmpgt
-      result[7:0] = a > b;
+      result[7:0] = $signed(a) > $signed(b);
     if (alufn[5-:6] == 6h38) // cmpge
-      result[7:0] = a >= b;
+      result[7:0] = $signed(a) >= $signed(b);
       
    
     
